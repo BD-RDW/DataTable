@@ -37,3 +37,6 @@ backend/data
 
 ## Angular
 node_modules
+.browserslistrc
+.editorconfig
+
