@@ -1,0 +1,38 @@
+DROP TABLE IF EXISTS books;
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  author VARCHAR(50) NOT NULL,
+  price INT DEFAULT NULL
+);
+INSERT INTO books (name, author, price) VALUES
+  ('Book1', 'Author 1', 5),
+  ('Book2', 'Author 2', 7),
+  ('Book3', 'Author 3', 9),
+  ('Book4', 'Author 4', 11),
+  ('Book5', 'Author 5', 13),
+  ('Book6', 'Author 2', 15),
+  ('Book7', 'Author 3', 17),
+  ('Book8', 'Author 4', 19),
+  ('Book9', 'Author 5', 21),
+  ('Book10', 'Author 1', 23),
+  ('Book11', 'Author 3', 25),
+  ('Book12', 'Author 4', 27),
+  ('Book13', 'Author 5', 29),
+  ('Book14', 'Author 1', 31),
+  ('Book15', 'Author 2', 33),
+  ('Book16', 'Author 4', 35),
+  ('Book17', 'Author 5', 5),
+  ('Book18', 'Author 1', 7),
+  ('Book19', 'Author 2', 9),
+  ('Book20', 'Author 3', 11),
+  ('Book21', 'Author 1', 13),
+  ('Book22', 'Author 5', 15),
+  ('Book23', 'Author 4', 17),
+  ('Book24', 'Author 3', 19),
+  ('Book25', 'Author 2', 21),
+  ('Book26', 'Author 1', 23),
+  ('Book27', 'Author 3', 25),
+  ('Book28', 'Author 4', 27),
+  ('Book29', 'Author 2', 29),
+  ('Book30', 'Author 1', 31);
