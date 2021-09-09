@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## Ignoring the H2 databases and 
+backend/data
+
+## Angular
+node_modules
