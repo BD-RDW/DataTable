@@ -14,15 +14,26 @@ export class BookService {
   constructor(private http: HttpClient) {
   }
 
-  public loadBooksFromServer(setSize: number, firstRec: number, ordderedBy: string): Observable<BookSlice> {
-    console.log(`Fetching books ${firstRec} , ${firstRec + setSize}`);
+  public loadBooksFromServer(setSize: number, firstRec: number, ordderedBy: string, filterd: any): Observable<BookSlice> {
     const ordering = ordderedBy ? ordderedBy : 'name';
-    return this.http.get<BooksResponse>(`${this.booksUrl}?page=${(firstRec / setSize)}&size=${setSize}&sort=${ordering}`)
+    let urlParameters = `page=${(firstRec / setSize)}&size=${setSize}&sort=${ordering}`;
+    let url = this.booksUrl;
+    if (filterd) {
+      if (filterd.name && filterd.name.value) {
+        url += '/search/findByNameContaining';
+        urlParameters += `&namePart=${filterd.name.value}`;
+      }
+      if (filterd.author && filterd.author.value) {
+        console.log('Filtering on author is not yet implemented.');
+      }
+    }
+    console.log(`Using call: ${url}?${urlParameters}`);
+    return this.http.get<BooksResponse>(`${url}?${urlParameters}`)
     .pipe(
       map( br => {
         return {books: br._embedded.books.map(bi => {
           return {name: bi.name, author: bi.author, price: bi.price} as Book; } )
-            , totalNumberOfBooks: br.page.totalElements } as BookSlice;
+            , totalNumberOfBooks: br.page && br.page.totalElements ? br.page.totalElements : 0 } as BookSlice;
       }),
        catchError(this.handleError<boolean>('sessionCreate', false)));
   }
@@ -50,7 +61,7 @@ export class BookService {
 interface BooksResponse {
   _embedded: EmbeddedData;
   _links: LinksInfo;
-  page: PageInfo;
+  page?: PageInfo;
 }
 interface PageInfo {
   size: number;

@@ -88,4 +88,4 @@ using url: http://localhost:8080/books?page=1&size=10
 
 ##Then reading only the required ordered set of books
 
-using url: http://localhost:8080/books?page=1&size=10&sort=author
+using url: http://localhost:8080/books/search/findByNameContaining?namePart=2&sort=author,desc&page=0&size=12

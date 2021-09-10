@@ -19,7 +19,7 @@ export class AppComponent {
   loadBooks($event: LazyLoadEvent): void {
     this.loading = true;
     console.log(`Event is: ${JSON.stringify($event)}`);
-    this.bookService.loadBooksFromServer($event.rows, $event.first, $event.sortField).subscribe(
+    this.bookService.loadBooksFromServer($event.rows, $event.first, $event.sortField, $event.filters).subscribe(
       bs => {
         this.books = bs.books;
         this.totalRecords = bs.totalNumberOfBooks;
