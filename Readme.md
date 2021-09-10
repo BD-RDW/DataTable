@@ -62,3 +62,20 @@ Create java classes Books and BookRepository
 
 [find books where name contains 2 and order then on author desc](http://localhost:8080/books/search/findByNameContaining?namePart=2&sort=author,desc&page=0&size=12)
 
+# Add Angular
+
+ng new frontend in <springboot install dir>/..
+
+npm install primeng --save
+
+npm install primeicons --save
+
+npm install @angular/cdk --save
+
+Add primeicons.css to styles in angular.json
+
+Build frontend with dataTable with fake book-service
+
+
+
+
