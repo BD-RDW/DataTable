@@ -76,6 +76,13 @@ Add primeicons.css to styles in angular.json
 
 Build frontend with dataTable with fake book-service
 
+# Link Frontend to Backend
 
+##First reading all books
 
+using url: http://localhost:8080/books
+
+##Then reading only the required set of books
+
+using url: http://localhost:8080/books?page=1&size=10
 
