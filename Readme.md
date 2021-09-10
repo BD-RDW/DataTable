@@ -89,3 +89,57 @@ using url: http://localhost:8080/books?page=1&size=10
 ##Then reading only the required ordered set of books
 
 using url: http://localhost:8080/books/search/findByNameContaining?namePart=2&sort=author,desc&page=0&size=12
+
+## Moving commit between repos
+
+Export from repo
+
+```
+git format-patch --output-directory "../patches" FIRST_COMMIT_SHA1~..LAST_COMMIT_SHA1
+// One commit only: git format-patch --output-directory .. -1 commit_sha
+// last three commits: git format-patch --output-directory ".." -3
+```
+Import into repo
+
+```
+git am 0001-Example-Patch-File.patch
+git am *.patch
+```
+
+####After rebuilding the git repo, build the backend using command:
+
+```
+mvn package -DskipTests
+```
+
+Start the backend application using command:
+
+```
+java -jar target/datatable-0.0.1-SNAPSHOT.jar --skip
+```
+
+Enter data into the database as described in [Run application](#run-application)
+
+To check data is correctly accessable by the application, stop the application and start is again without the --skip argument.
+
+```
+java -jar target/datatable-0.0.1-SNAPSHOT.jar
+```
+
+After the application has started it should list all books in the table (30 records)
+
+####After rebuilding the git repo, build the frontend using command:
+
+```
+npm install
+```
+
+Run the frontend using command:
+
+```
+npm start
+```
+
+In the UI the pagination works, sorting an column works and filtering works partially on the 'Name' column
+
+
