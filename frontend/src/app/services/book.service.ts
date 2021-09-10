@@ -14,13 +14,14 @@ export class BookService {
   constructor(private http: HttpClient) {
   }
 
-  public loadBooksFromServer(setSize: number, firstRec: number): Observable<BookSlice> {
+  public loadBooksFromServer(setSize: number, firstRec: number, ordderedBy: string): Observable<BookSlice> {
     console.log(`Fetching books ${firstRec} , ${firstRec + setSize}`);
-    return this.http.get<BooksResponse>(`${this.booksUrl}?page=${(firstRec / setSize)}&size=${setSize}`)
+    const ordering = ordderedBy ? ordderedBy : 'name';
+    return this.http.get<BooksResponse>(`${this.booksUrl}?page=${(firstRec / setSize)}&size=${setSize}&sort=${ordering}`)
     .pipe(
       map( br => {
         return {books: br._embedded.books.map(bi => {
-          return {name: bi.name, author: bi.author, price: bi.price} as Book } )
+          return {name: bi.name, author: bi.author, price: bi.price} as Book; } )
             , totalNumberOfBooks: br.page.totalElements } as BookSlice;
       }),
        catchError(this.handleError<boolean>('sessionCreate', false)));

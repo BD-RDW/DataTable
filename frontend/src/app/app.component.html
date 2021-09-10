@@ -3,9 +3,9 @@
     <p-table [value]="books" [paginator]="true" [rows]="8" [lazy]="true" (onLazyLoad)="loadBooks($event)" [totalRecords]="totalRecords" [loading]="loading">
         <ng-template pTemplate="header">
             <tr>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Price</th>
+                <th pSortableColumn="name">Name <p-sortIcon field="Name"></p-sortIcon></th>
+                <th pSortableColumn="author">Author <p-sortIcon field="Author"></p-sortIcon></th>
+                <th pSortableColumn="price">Price <p-sortIcon field="Price"></p-sortIcon></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-book>
