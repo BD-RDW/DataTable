@@ -32,11 +32,12 @@ build/
 ### VS Code ###
 .vscode/
 
-## Ignoring the H2 databases and 
+## Ignoring the H2 databases and copied files 
 backend/data
+backend/src/main/resources/public
 
 ## Angular
 node_modules
 .browserslistrc
 .editorconfig
-
+frontend/node
