@@ -115,7 +115,7 @@ mvn package -DskipTests
 Start the backend application using command:
 
 ```
-java -jar target/datatable-0.0.1-SNAPSHOT.jar --skip
+java -jar target/backend-0.0.1-SNAPSHOT.jar --skip
 ```
 
 Enter data into the database as described in [Run application](#run-application)
@@ -123,7 +123,7 @@ Enter data into the database as described in [Run application](#run-application)
 To check data is correctly accessable by the application, stop the application and start is again without the --skip argument.
 
 ```
-java -jar target/datatable-0.0.1-SNAPSHOT.jar
+java -jar target/backend-0.0.1-SNAPSHOT.jar
 ```
 
 After the application has started it should list all books in the table (30 records)
@@ -141,5 +141,23 @@ npm start
 ```
 
 In the UI the pagination works, sorting an column works and filtering works partially on the 'Name' column
+
+#Package Angular inside the Springboot jar.
+
+Updated the pom files to place angular files in src/main/resources/public/
+
+###Start application
+
+Build the application and run command:
+
+```
+java -jar backend/target/backend-0.0.1-SNAPSHOT.jar
+```
+
+Open browser to url: http://localhost:8080/
+
+# Adding Liquibase to backend
+
+[Use Liquibase to Safely Evolve Your Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)
 
 

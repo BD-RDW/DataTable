@@ -1,10 +1,3 @@
-DROP TABLE IF EXISTS books;
-CREATE TABLE books (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  author VARCHAR(50) NOT NULL,
-  price INT DEFAULT NULL
-);
 INSERT INTO books (name, author, price) VALUES
   ('Book1', 'Author 1', 5),
   ('Book2', 'Author 2', 7),
@@ -36,3 +29,4 @@ INSERT INTO books (name, author, price) VALUES
   ('Book28', 'Author 4', 27),
   ('Book29', 'Author 2', 29),
   ('Book30', 'Author 1', 31);
+GO

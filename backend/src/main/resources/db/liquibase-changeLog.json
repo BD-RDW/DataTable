@@ -1,0 +1,79 @@
+{
+  "databaseChangeLog": [
+    {
+      "preConditions": [
+        {
+          "runningAs": {
+            "username": "SA"
+          }
+        }
+      ]
+    },
+    {
+      "changeSet": {
+        "id": "createTable",
+        "author": "weera09",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "books",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "type": "int",
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    },
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "varchar(50)",
+                    "constraints": {
+                      "nullable": false
+                    },
+                  }
+                },
+                {
+                  "column": {
+                    "name": "author",
+                    "type": "varchar(50)",
+                    "constraints": {
+                      "nullable": false
+                    },
+                  }
+                },
+                {
+                  "column": {
+                    "name": "price",
+                    "type": "int"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "EnterData",
+        "author": "weera09",
+        "changes": [
+          {
+            "sqlFile": {
+              "endDelimiter":"\nGO",
+              "splitStatements":true,
+              "path":"classpath:/db/books.sql",
+              "stripComments":true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
